@@ -37,51 +37,70 @@
    ```bash
    git clone https://github.com/your-username/your-repo.git
    cd your-repo
-Install dependencies:
-bash
-Copy code
-npm install
-Configure environment variables:
-Create a .env file in the root directory with the following variables:
-makefile
-Copy code
+
+# ⚙️ Configuration Guide
+
+## 2. Configure Environment Variables
+
+To set up the application, create a `.env` file in the root directory with the following variables:
+
+```env
 PORT=5000
 MONGO_URI=your_mongo_connection_string
 JWT_SECRET=your_jwt_secret_key
-Start the application:
-bash
-Copy code
+```
+
+#  Installation
+npm install
 npm start
-📚 API Endpoints
-🔐 Authentication Routes
-Route	Method	Middleware	Description
-/signup	POST	None	Register a new user.
-/login	POST	None	Authenticate user and return a JWT.
-/user-info	GET	verifyToken	Retrieve authenticated user info.
-/update-profile	POST	verifyToken	Update user profile details.
-/add-profile-image	POST	verifyToken, upload.single	Upload a profile image.
-/remove-profile-image	DELETE	verifyToken	Remove the profile image.
-/logout	POST	verifyToken	Log out the user.
-📡 Channel Routes
-Route	Method	Middleware	Description
-/create-channel	POST	verifyToken	Create a new chat channel.
-/get-user-channels	GET	verifyToken	Retrieve all channels of the user.
-/get-channel-messages/:channelId	GET	verifyToken	Fetch messages from a specific channel.
-📇 Contact Routes
-Route	Method	Middleware	Description
-/search	POST	verifyToken	Search for contacts.
-/get-contacts-for-dm	GET	verifyToken	Retrieve contacts for direct messages.
-/get-all-contacts	GET	None	Fetch all contacts in the database.
-💬 Message Routes
-Route	Method	Middleware	Description
-/get-all-messages	POST	verifyToken	Fetch all messages in a chat.
-/upload-file	POST	verifyToken, upload.single	Upload a file in a chat.
-📂 Middleware Used
-verifyToken: Verifies the JWT for secure user authentication.
-upload.single: Handles single-file uploads with Multer.
-🛡️ Security Features
-Passwords are hashed using Bcrypt, ensuring user credentials are securely stored.
-Authentication with JWT, providing stateless and secure access control.
-Proper handling of CORS to allow trusted origins only.
-📤 Contributions
-We welcome contributions! If you'd like to contribute, fork the repo, make your changes, and submit a pull request.
+   
+# API Endpoints
+
+## 🔐 Authentication Routes
+
+| Route                  | Method | Middleware           | Description                              |
+|------------------------|--------|----------------------|------------------------------------------|
+| `/signup`              | POST   | None                 | Register a new user.                     |
+| `/login`               | POST   | None                 | Authenticate user and return a JWT.      |
+| `/user-info`           | GET    | `verifyToken`        | Retrieve authenticated user info.        |
+| `/update-profile`      | POST   | `verifyToken`        | Update user profile details.             |
+| `/add-profile-image`   | POST   | `verifyToken`, `upload.single` | Upload a profile image.         |
+| `/remove-profile-image`| DELETE | `verifyToken`        | Remove the profile image.                |
+| `/logout`              | POST   | `verifyToken`        | Log out the user.                        |
+
+## 📡 Channel Routes
+
+| Route                          | Method | Middleware    | Description                              |
+|--------------------------------|--------|---------------|------------------------------------------|
+| `/create-channel`              | POST   | `verifyToken` | Create a new chat channel.               |
+| `/get-user-channels`           | GET    | `verifyToken` | Retrieve all channels of the user.       |
+| `/get-channel-messages/:channelId` | GET | `verifyToken` | Fetch messages from a specific channel.  |
+
+## 📇 Contact Routes
+
+| Route                     | Method | Middleware    | Description                              |
+|---------------------------|--------|---------------|------------------------------------------|
+| `/search`                 | POST   | `verifyToken` | Search for contacts.                     |
+| `/get-contacts-for-dm`    | GET    | `verifyToken` | Retrieve contacts for direct messages.   |
+| `/get-all-contacts`       | GET    | None          | Fetch all contacts in the database.      |
+
+# 📂 Middleware Used
+
+- **`verifyToken`**: Verifies the JWT for secure user authentication.
+- **`upload.single`**: Handles single-file uploads with Multer.
+
+# 🛡️ Security Features
+
+- **Password Hashing**: User passwords are hashed using Bcrypt, ensuring credentials are securely stored.
+- **JWT Authentication**: Stateless and secure access control using JSON Web Tokens.
+- **CORS Handling**: Proper configuration to allow requests only from trusted origins.
+
+# 📤 Contributions
+
+We welcome contributions! Here's how you can contribute:
+
+1. **Fork the Repository**: Create your copy of the project.
+2. **Make Changes**: Implement your improvements or fixes.
+3. **Submit a Pull Request**: Propose your changes to be reviewed and merged.
+
+Feel free to contribute and improve the project!
